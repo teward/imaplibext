@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='imaplibext',
-    version='0.0.1',
+    version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -29,4 +29,5 @@ setup(
         'Topic :: Communications :: Email',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+    keywords='imaplib imap UID email'
 )
