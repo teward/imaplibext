@@ -121,3 +121,8 @@ ENV/
 # Rope project settings
 .ropeproject
 
+### Custom
+
+## Automated 'setup' script for the dev side of things.  Do not include.
+trigger_package_updates.py
+trigger_package_updates

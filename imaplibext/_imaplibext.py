@@ -4,7 +4,7 @@ from typing import Union, Tuple, AnyStr, List, Any
 __title__ = 'imaplibext._imaplibext'
 __author__ = 'Thomas Ward'
 __copyright__ = '2017 Thomas Ward'
-__license__ = 'GPL 3.0/LGPL 3.1'
+__license__ = 'AGPLv3+'
 __all__ = (
     'IMAP4',
     'IMAP4_SSL'
