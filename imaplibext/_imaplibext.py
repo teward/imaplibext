@@ -12,18 +12,15 @@ __all__ = (
 
 
 class IMAP4(imaplib.IMAP4):
-    def search(self, charset, *criteria):
-        # type: (AnyStr, Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
-        """Search mailbox for matching messages.
+    def copy(self, message_set, new_mailbox):
+        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, list]
+        """Copy 'message_set' messages onto end of 'new_mailbox'.
 
-        (typ, [data]) = <instance>.search(charset, criterion, ...)
-
-        'data' is space separated list of matching message UID numbers.
-        If UTF8 is enabled, charset MUST be None.
+        (typ, [data]) = <instance>.copy(message_set, new_mailbox)
         """
 
-        # conn.uid('SEARCH', charset, criteria)
-        return self.uid('SEARCH', charset, " ".join(criteria))
+        # conn.uid('COPY', message_set, new_mailbox)
+        return self.uid('COPY', message_set, new_mailbox)
 
     def fetch(self, message_set, message_parts):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
@@ -39,6 +36,42 @@ class IMAP4(imaplib.IMAP4):
 
         # conn.uid('FETCH', msgset, parts)
         return self.uid('FETCH', message_set, message_parts)
+
+    def search(self, charset, *criteria):
+        # type: (AnyStr, Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
+        """Search mailbox for matching messages.
+
+        (typ, [data]) = <instance>.search(charset, criterion, ...)
+
+        'data' is space separated list of matching message UID numbers.
+        If UTF8 is enabled, charset MUST be None.
+        """
+
+        # conn.uid('SEARCH', charset, criteria)
+        return self.uid('SEARCH', charset, " ".join(criteria))
+
+    def sort(self, sort_criteria, charset, *search_criteria):
+        # type: (AnyStr, AnyStr, Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
+        """IMAP4rev1 extension SORT command.
+
+        (typ, [data]) = <instance>.sort(sort_criteria, charset, search_criteria, ...)
+        """
+
+        # conn.uid('SORT', '(SORT CRITERION)', 'CHARSET', 'SEARCH_CRITERIA')
+
+        # Preprocess the 'sort criteria' provided - make sure it's all in parentheses.
+        while True:
+            if sort_criteria[0] != '(':
+                sort_criteria = '(' + sort_criteria
+                continue
+
+            if sort_criteria[len(sort_criteria) - 1] != ')':
+                sort_criteria += ')'
+                continue
+
+            break
+
+        return self.uid('SORT', sort_criteria, charset, ' '.join(search_criteria))
 
     def store(self, message_set, command, flags):
         # type: (AnyStr, AnyStr, AnyStr) -> Tuple[AnyStr, list]
@@ -53,18 +86,15 @@ class IMAP4(imaplib.IMAP4):
 
 # noinspection PyPep8Naming
 class IMAP4_SSL(imaplib.IMAP4_SSL):
-    def search(self, charset, *criteria):
-        # type: (AnyStr, Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
-        """Search mailbox for matching messages.
+    def copy(self, message_set, new_mailbox):
+        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, list]
+        """Copy 'message_set' messages onto end of 'new_mailbox'.
 
-        (typ, [data]) = <instance>.search(charset, criterion, ...)
-
-        'data' is space separated list of matching message UID numbers.
-        If UTF8 is enabled, charset MUST be None.
+        (typ, [data]) = <instance>.copy(message_set, new_mailbox)
         """
 
-        # conn.uid('SEARCH', charset, criteria)
-        return self.uid('SEARCH', charset, " ".join(criteria))
+        # conn.uid('COPY', message_set, new_mailbox)
+        return self.uid('COPY', message_set, new_mailbox)
 
     def fetch(self, message_set, message_parts):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
@@ -80,6 +110,42 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
 
         # conn.uid('FETCH', msgset, parts)
         return self.uid('FETCH', message_set, message_parts)
+
+    def search(self, charset, *criteria):
+        # type: (AnyStr, Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
+        """Search mailbox for matching messages.
+
+        (typ, [data]) = <instance>.search(charset, criterion, ...)
+
+        'data' is space separated list of matching message UID numbers.
+        If UTF8 is enabled, charset MUST be None.
+        """
+
+        # conn.uid('SEARCH', charset, criteria)
+        return self.uid('SEARCH', charset, " ".join(criteria))
+
+    def sort(self, sort_criteria, charset, *search_criteria):
+        # type: (AnyStr, AnyStr, Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
+        """IMAP4rev1 extension SORT command.
+
+        (typ, [data]) = <instance>.sort(sort_criteria, charset, search_criteria, ...)
+        """
+
+        # conn.uid('SORT', '(SORT CRITERION)', 'CHARSET', 'SEARCH_CRITERIA')
+
+        # Preprocess the 'sort criteria' provided - make sure it's all in parentheses.
+        while True:
+            if sort_criteria[0] != '(':
+                sort_criteria = '(' + sort_criteria
+                continue
+
+            if sort_criteria[len(sort_criteria) - 1] != ')':
+                sort_criteria += ')'
+                continue
+
+            break
+
+        return self.uid('SORT', sort_criteria, charset, ' '.join(search_criteria))
 
     def store(self, message_set, command, flags):
         # type: (AnyStr, AnyStr, AnyStr) -> Tuple[AnyStr, list]
