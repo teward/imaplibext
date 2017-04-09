@@ -32,11 +32,20 @@ and uses the Python 2 type hinting suggested in [PEP 484][2], but also the `typi
 
 ## Installation / Usage
 
-### Dependencies
+### Use PyPI
+
+This library is available from the PyPI repository.
+
+#### Python 2:
+
+
+### Install from Source Code
+
+#### Dependencies
 
 First, install the dependencies from PyPI.
 
-#### Python 2
+##### Python 2
 
 For system-wide installation:
 
@@ -46,7 +55,7 @@ For user-space installation:
 
     pip install --user --upgrade -r requirements.txt
     
-#### Python 3
+##### Python 3
 
 For system-wide installation:
 
@@ -60,8 +69,10 @@ For user-space installation:
 
 Simply copy the `imaplibext` package folder into your working directory for your Python script or program.
 
-From there, you can import into your Python code as a drop-in replacement for `imaplib`'s `IMAP4` or `IMAP4_SSL` 
-commands.
+## Usage
+
+Once installed in either method, you can import into your Python code as a drop-in replacement for `imaplib`'s 
+`IMAP4` or `IMAP4_SSL` commands.
 
     # Use this to import as a module and call things with `imaplibext.OBJECTNAME`
     import imaplibext
@@ -69,7 +80,7 @@ commands.
     # or, use this, to call IMAP4 and IMAP4_SSL directly in your code, but get the UID functions instead.
     from imaplibext import IMAP4, IMAP4_SSL
     
-### Usage
+## Usage
 
 Usage is identical to `imaplib`'s `IMAP4` and `IMAP4_SSL` classes and corresponding function calls. There is no real
 difference in how to reference functions or the classes in the IMAP4 or IMAP4_SSL functions here compared to the parent
@@ -77,14 +88,6 @@ difference in how to reference functions or the classes in the IMAP4 or IMAP4_SS
 
 
 ## FAQ
-
-### Why isn't there a PyPi / `pip` package for this?
-
-Because the author is lazy and doesn't know enough about PIP packaging to create a package for this.  Sorry.
-
-If you want to help make a package for this, though, feel free to make pull requests and such to bring in the packaging.
-I am happy to work together with the open-source community to produce PyPI packaging.  (I've included some elements in 
-here, but really don't know the PyPI packaging rules).
 
 ### Where can I report issues or make Feature Requests?
 
