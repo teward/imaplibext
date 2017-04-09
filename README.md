@@ -1,7 +1,11 @@
 ## IMAP Lib Extension Module
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
-[![PyPI version](https://badge.fury.io/py/imaplibext.svg)](https://badge.fury.io/py/imaplibext)
+[![PyPI Version](http://img.shields.io/pypi/v/imaplibext.svg)](https://pypi.python.org/pypi/imaplibext)
+
+[![PyPI Downloads](http://img.shields.io/pypi/dm/imaplibext.svg)](https://pypi.python.org/pypi/imaplibext)  
+[![PyPI Downloads](http://img.shields.io/pypi/dw/imaplibext.svg)](https://pypi.python.org/pypi/imaplibext)  
+[![PyPI Downloads](http://img.shields.io/pypi/dd/imaplibext.svg)](https://pypi.python.org/pypi/imaplibext)
 
 ## Description
 
