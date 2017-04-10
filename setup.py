@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='imaplibext',
-    version='0.2.1-alpha0',
+    version='0.2.1-alpha1',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

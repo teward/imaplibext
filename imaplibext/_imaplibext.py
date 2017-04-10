@@ -3,6 +3,7 @@ from typing import Union, Tuple, AnyStr, List, Any
 
 __title__ = 'imaplibext._imaplibext'
 __author__ = 'Thomas Ward'
+__version__ = '0.2.1-alpha1'
 __copyright__ = '2017 Thomas Ward'
 __license__ = 'AGPLv3+'
 __all__ = (
@@ -58,6 +59,20 @@ class IMAP4(imaplib.IMAP4):
         """
 
         # conn.uid('SORT', '(SORT CRITERION)', 'CHARSET', 'SEARCH_CRITERIA')
+
+        # Preprocess the search_criterion tuple - make sure all string data is split up in order
+        # to make each component of the argument as its own tuple item, instead of strings with
+        # spaces.
+        _search_criterion = []
+        for criterion in search_criteria:
+            criterion = str(criterion)
+            if ' ' in criterion:
+                for subcriterion in criterion.split():
+                    _search_criterion.append(subcriterion)
+            else:
+                _search_criterion.append(criterion)
+
+        search_criteria = tuple(list(_search_criterion))
 
         # Preprocess the 'sort criteria' provided - make sure it's all in parentheses.
         while True:
@@ -132,6 +147,20 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         """
 
         # conn.uid('SORT', '(SORT CRITERION)', 'CHARSET', 'SEARCH_CRITERIA')
+
+        # Preprocess the search_criterion tuple - make sure all string data is split up in order
+        # to make each component of the argument as its own tuple item, instead of strings with
+        # spaces.
+        _search_criterion = []
+        for criterion in search_criteria:
+            criterion = str(criterion)
+            if ' ' in criterion:
+                for subcriterion in criterion.split():
+                    _search_criterion.append(subcriterion)
+            else:
+                _search_criterion.append(criterion)
+
+        search_criteria = tuple(list(_search_criterion))
 
         # Preprocess the 'sort criteria' provided - make sure it's all in parentheses.
         while True:
