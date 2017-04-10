@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='imaplibext',
-    version='0.2.1-alpha1',
+    version='0.2.1-alpha2',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -13,7 +13,7 @@ setup(
     author_email='teward@dark-net.io',
     description="An imaplib extension module, that provides versions of IMAP4 and IMAP4_SSL which use functions (such "
                 "as 'search', 'fetch', 'store') which return or use UID-based message-set identifiers to better handle "
-                "messages uniquely.\n\n0.2.1-alpha1 fixes an issue with the 'sort' command syntax.",
+                "messages uniquely.",
     license='AGPLv3+',
     url='https://github.com/teward/imaplibext',
     classifiers=[
