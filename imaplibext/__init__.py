@@ -5,7 +5,7 @@ from ._imaplibext import (
 
 __title__ = 'imaplibext'
 __author__ = 'Thomas Ward'
-__version__ = '0.2.1-alpha2'
+__version__ = '0.3.0'
 __copyright__ = '2017 Thomas Ward'
 __license__ = 'AGPLv3+'
 __all__ = ('IMAP4', 'IMAP4_SSL')

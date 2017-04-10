@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='imaplibext',
-    version='0.2.1-alpha2',
+    version='0.3.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -17,7 +17,7 @@ setup(
     license='AGPLv3+',
     url='https://github.com/teward/imaplibext',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Environment :: Other Environment',
         'Intended Audience :: Developers',
