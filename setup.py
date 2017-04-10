@@ -12,8 +12,8 @@ setup(
     author='Thomas Ward',
     author_email='teward@dark-net.io',
     description="An imaplib extension module, that provides versions of IMAP4 and IMAP4_SSL which use functions (such "
-                "as 'search', 'fetch', 'store') which return or use UID-based message-set identifiers to better handle "
-                "messages uniquely.",
+                "as 'copy', 'search', 'fetch', 'store') which return or use UID-based message-set identifiers to "
+                "better handle unique message identifiers.",
     license='AGPLv3+',
     url='https://github.com/teward/imaplibext',
     classifiers=[
