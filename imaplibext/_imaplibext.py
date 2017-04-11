@@ -3,7 +3,7 @@ from typing import Union, Tuple, AnyStr, List, Any
 
 __title__ = 'imaplibext._imaplibext'
 __author__ = 'Thomas Ward'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 __copyright__ = '2017 Thomas Ward'
 __license__ = 'AGPLv3+'
 __all__ = (
