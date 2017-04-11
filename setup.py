@@ -46,5 +46,5 @@ setup(
     ],
     keywords='imaplib imap UID email',
     platforms='any',
-
+    test_suite='tests'
 )
