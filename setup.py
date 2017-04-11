@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='imaplibext',
-    version='0.3.1',
+    version='0.3.2',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -18,8 +18,7 @@ setup(
                      "more difficult, and can result in the wrong messages being adjusted. This extension module is "
                      "designed to override the 'copy', 'search', 'fetch', and 'store' functions and provide UID-based "
                      "commands, by using the `uid` command and passing UID-format commands for the functions that are "
-                     "overridden."
-                "better handle unique message identifiers.",
+                     "overridden.",
     license='AGPLv3+',
     url='https://github.com/teward/imaplibext',
     download_url='https://pypi.python.org/pypi/imaplibext',
