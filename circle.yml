@@ -3,7 +3,7 @@ machine:
     - pyenv global 2.7.10 3.6.1
 dependencies:
   cache_directories:
-    - "~/virtualenv/python*"
+    - "~/virtualenvs"
     - "~/.cache/pip"
   post:
     - pip install flake8 --upgrade
