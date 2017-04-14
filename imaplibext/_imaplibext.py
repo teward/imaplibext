@@ -1,8 +1,18 @@
 import imaplib
+import socket
 from typing import Union, Tuple, AnyStr, List, Any
+import sys
 
 
 class IMAP4(imaplib.IMAP4):
+    def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None):
+        # type: (AnyStr, int) -> None
+        # Override standard __init__ - we need to add a timeout option.
+        # This timeout option is used below in the 'open' function override.
+        socket.setdefaulttimeout(timeout)
+        imaplib.IMAP4.__init__(self, host, port)
+        return  # PEP compliance
+
     def copy(self, message_set, new_mailbox):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, list]
         """Copy 'message_set' messages onto end of 'new_mailbox'.
@@ -91,6 +101,23 @@ class IMAP4(imaplib.IMAP4):
 
 # noinspection PyPep8Naming
 class IMAP4_SSL(imaplib.IMAP4_SSL):
+    def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None,
+                 keyfile=None, certfile=None, ssl_context=None):
+        # type: (AnyStr, int, int, any, any, any) -> None
+        # Override standard __init__ - we need to add a timeout option.
+        # This timeout option is used below in the 'open' function override.
+        self.timeout = timeout
+        socket.setdefaulttimeout(timeout)
+        if sys.version_info.major < 3:
+            if ssl_context is not None:
+                print("Warning: Defining `ssl_context` is not supported in "
+                      "Python 2's IMAP_SSL implementation.")
+            imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile)
+        else:
+            imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile, ssl_context)
+
+        return  # PEP compliance
+
     def copy(self, message_set, new_mailbox):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, list]
         """Copy 'message_set' messages onto end of 'new_mailbox'.
