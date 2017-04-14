@@ -10,8 +10,8 @@ dependencies:
   post:
     - if [ $CIRCLE_NODE_INDEX == "0" ] ; then pip install flake8 --upgrade ; fi
     - if [ $CIRCLE_NODE_INDEX == "0" ] ; then pip install -r requirements.txt --upgrade ; fi
-    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pip3 install flake8 --upgrade
-    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pip3 install -r requirements.txt --upgrade
+    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pip3 install flake8 --upgrade ; fi
+    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pip3 install -r requirements.txt --upgrade ; fi
 test:
   override:
     - flake8 .
