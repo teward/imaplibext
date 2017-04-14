@@ -1,9 +1,9 @@
 machine:
   python:
-    version: if [ $CIRCLE_NODE_INDEX = "0" ]; then 2.7.10; elif [ $CIRCLE_NODE_INDEX == "1" ]; then 3.6.1 ; fi
-  post:
-    - pyenv global 2.7.10 3.6.1
+    version: 2.7.10
 dependencies:
+  pre:
+    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pyenv global 3.6.1 ; fi
   cache_directories:
     - "~/virtualenvs"
     - "~/.cache/pip"
