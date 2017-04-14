@@ -1,20 +1,17 @@
 machine:
   post:
-    - pyenv global 2.7.10
+    - if [ $CIRCLE_NODE_INDEX == "0" ] ; then pyenv global 2.7.10 ; fi
+    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pyenv global 3.6.1 ; fi
 dependencies:
   cache_directories:
     - "~/virtualenvs"
     - "~/.cache/pip"
-  pre:
-    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pyenv global 3.6.1 ; fi
   post:
-    - if [ $CIRCLE_NODE_INDEX == "0" ] ; then pip install flake8 --upgrade ; fi
-    - if [ $CIRCLE_NODE_INDEX == "0" ] ; then pip install -r requirements.txt --upgrade ; fi
-    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pip3 install flake8 --upgrade ; fi
-    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pip3 install -r requirements.txt --upgrade ; fi
+    - case $CIRCLE_NODE_INDEX in 0) pip install flake8 --upgrade ;; 1) pip3 install flake8 --upgrade ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) pip install -r requirements.txt --upgrade ;; 1) pip3 install -r requirements.txt --upgrade ;; esac:
 test:
   override:
-      parallel: true:
-        - flake8 .
-        - if [ $CIRCLE_NODE_INDEX == "0" ] ; then python -m unittest -v tests ; fi
-        - if [ $CIRCLE_NODE_INDEX == "1" ] ; then python3 -m unittest -v tests ; fi
+      - case $CIRCLE_NODE_INDEX in 0) flake8 . ;; 1) flake8 . ;; esac:
+          parallel: true
+      - case $CIRCLE_NODE_INDEX in 0) python -m unittest -v tests ;; 1) python3 -m unittest -v tests ;; esac:
+          parallel: true
