@@ -1,11 +1,14 @@
 machine:
+  python:
+    version: if [ $CIRCLE_NODE_INDEX = "0" ]; then 2.7.10; elif [ $CIRCLE_NODE_INDEX == "1" ]; then 3.6.1 ; fi
   post:
-    - case $CIRCLE_NODE_INDEX in 0) pyenv global 2.7.10 ;; 1) pyenv global 3.6.1 ;; fi ;; esac
+    - pyenv global 2.7.10 3.6.1
 dependencies:
   cache_directories:
     - "~/virtualenvs"
     - "~/.cache/pip"
   override:
+    - case $CIRCLE_NODE_INDEX in 0) pyenv local 2.7.10 --upgrade ;; 1) pyenv 3.6.1 ;; esac
     - case $CIRCLE_NODE_INDEX in 0) pip install flake8 --upgrade ;; 1) pip3 install flake8 --upgrade ;; esac
     - case $CIRCLE_NODE_INDEX in 0) pip install -r requirements.txt --upgrade ;; 1) pip3 install -r requirements.txt --upgrade ;; esac
 test:
