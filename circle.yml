@@ -1,13 +1,13 @@
 machine:
   post:
-    - case $CIRCLE_NODE_INDEX in 0) pyenv global 2.7.10 ;; 1) pyenv global 3.6.1 ;; fi
+    - case $CIRCLE_NODE_INDEX in 0) pyenv global 2.7.10 ;; 1) pyenv global 3.6.1 ;; fi ;; esac
 dependencies:
   cache_directories:
     - "~/virtualenvs"
     - "~/.cache/pip"
   override:
-    - case $CIRCLE_NODE_INDEX in 0) pip install flake8 --upgrade ;; 1) pip3 install flake8 --upgrade ;; esac:
-    - case $CIRCLE_NODE_INDEX in 0) pip install -r requirements.txt --upgrade ;; 1) pip3 install -r requirements.txt --upgrade ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) pip install flake8 --upgrade ;; 1) pip3 install flake8 --upgrade ;; esac
+    - case $CIRCLE_NODE_INDEX in 0) pip install -r requirements.txt --upgrade ;; 1) pip3 install -r requirements.txt --upgrade ;; esac
 test:
   override:
       - case $CIRCLE_NODE_INDEX in 0) flake8 . ;; 1) flake8 . ;; esac:
