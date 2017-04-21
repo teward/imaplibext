@@ -2,8 +2,9 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
-[![Travis-CI](https://travis-ci.org/teward/imaplibext.svg?branch=master)](https://travis-ci.org/teward/imaplibext)  
-[![CircleCI](https://circleci.com/gh/teward/imaplibext.svg?style=shield)](https://circleci.com/gh/teward/imaplibext)
+[![Travis-CI](https://travis-ci.org/teward/imaplibext.svg?branch=master)](https://travis-ci.org/teward/imaplibext) (TravisCI)  
+[![CircleCI](https://circleci.com/gh/teward/imaplibext.svg?style=shield)](https://circleci.com/gh/teward/imaplibext)  
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/nqlp3btyfb1trpgw/branch/master?svg=true)](https://ci.appveyor.com/project/teward/imaplibext/branch/master) (AppVeyor)
 
 [![PyPI Version](http://img.shields.io/pypi/v/imaplibext.svg)](https://pypi.python.org/pypi/imaplibext)
 
