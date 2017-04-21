@@ -1,10 +1,25 @@
 ## IMAP Lib Extension Module
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+### Basic Information
 
-[![Travis-CI](https://travis-ci.org/teward/imaplibext.svg?branch=master)](https://travis-ci.org/teward/imaplibext) (TravisCI)  
-[![CircleCI](https://circleci.com/gh/teward/imaplibext.svg?style=shield)](https://circleci.com/gh/teward/imaplibext)  
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/nqlp3btyfb1trpgw/branch/master?svg=true)](https://ci.appveyor.com/project/teward/imaplibext/branch/master) (AppVeyor)
+<table>
+<tr><td align=center valign=center><a href="http://www.gnu.org/licenses/agpl-3.0" target="_blank"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" title="AGPL 3.0" /></a></td></tr>
+<tr><td align=center valign=center><a href="https://pypi.python.org/pypi/imaplibext" target="_blank"><img src="http://img.shields.io/pypi/v/imaplibext.svg" title="PyPI Version" /></a></td></tr>
+<tr><td align=center valign=center><a href="https://pypi.python.org/pypi/imaplibext" target="_blank"><img src="http://img.shields.io/pypi/dm/imaplibext.svg" title="Montly Downloads" /><br />
+<img src="http://img.shields.io/pypi/dw/imaplibext.svg" title="Weekly Downloads" /><br />
+<img src="http://img.shields.io/pypi/dd/imaplibext.svg" title="Daily Downloads" /></a></td></tr>
+</table>
+
+
+### Continuous Integration Status
+
+| CI Provider | Status                                                                                                                                                              |
+|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Travis CI   | [![Travis-CI](https://travis-ci.org/teward/imaplibext.svg?branch=master)](https://travis-ci.org/teward/imaplibext)                                                  |
+| CircleCI    | [![CircleCI](https://circleci.com/gh/teward/imaplibext.svg?style=shield)](https://circleci.com/gh/teward/imaplibext)                                                |
+| AppVeyor    | [![AppVeyor](https://ci.appveyor.com/api/projects/status/nqlp3btyfb1trpgw/branch/master?svg=true)](https://ci.appveyor.com/project/teward/imaplibext/branch/master) |
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
 [![PyPI Version](http://img.shields.io/pypi/v/imaplibext.svg)](https://pypi.python.org/pypi/imaplibext)
 
