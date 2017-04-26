@@ -1,9 +1,9 @@
 from setuptools import find_packages, setup
-
+from imaplibext import __version__ as version
 
 setup(
     name='imaplibext',
-    version='0.3.2',
+    version=version,
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

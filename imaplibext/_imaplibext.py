@@ -9,7 +9,9 @@ class IMAP4(imaplib.IMAP4):
         # type: (AnyStr, int) -> None
         # Override standard __init__ - we need to add a timeout option.
         # This timeout option is used below in the 'open' function override.
-        socket.setdefaulttimeout(timeout)
+        if timeout:
+            socket.setdefaulttimeout(timeout)
+
         imaplib.IMAP4.__init__(self, host, port)
         return  # PEP compliance
 
@@ -107,9 +109,11 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         # Override standard __init__ - we need to add a timeout option.
         # This timeout option is used below in the 'open' function override.
         self.timeout = timeout
-        socket.setdefaulttimeout(timeout)
+        if timeout:
+            socket.setdefaulttimeout(timeout)
+
         if sys.version_info.major < 3:
-            if ssl_context is not None:
+            if ssl_context:
                 print("Warning: Defining `ssl_context` is not supported in "
                       "Python 2's IMAP_SSL implementation.")
             imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile)
