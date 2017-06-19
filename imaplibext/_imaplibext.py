@@ -41,7 +41,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('FETCH', message_set, message_parts)
 
     def search(self, charset, *criteria):
-        # type: (AnyStr, Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
+        # type: (Union[AnyStr, None], Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
         """Search mailbox for matching messages.
 
         (typ, [data]) = <instance>.search(charset, criterion, ...)
@@ -54,7 +54,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('SEARCH', charset, " ".join(criteria))
 
     def sort(self, sort_criteria, charset, *search_criteria):
-        # type: (AnyStr, AnyStr, Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
+        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
         """IMAP4rev1 extension SORT command.
 
         (typ, [data]) = <instance>.sort(sort_criteria, charset, search_criteria, ...)
@@ -148,7 +148,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('FETCH', message_set, message_parts)
 
     def search(self, charset, *criteria):
-        # type: (AnyStr, Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
+        # type: (Union[AnyStr, None], Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
         """Search mailbox for matching messages.
 
         (typ, [data]) = <instance>.search(charset, criterion, ...)
@@ -161,7 +161,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('SEARCH', charset, " ".join(criteria))
 
     def sort(self, sort_criteria, charset, *search_criteria):
-        # type: (AnyStr, AnyStr, Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
+        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
         """IMAP4rev1 extension SORT command.
 
         (typ, [data]) = <instance>.sort(sort_criteria, charset, search_criteria, ...)
