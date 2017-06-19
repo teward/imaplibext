@@ -110,6 +110,33 @@ class IMAP4(imaplib.IMAP4):
         # conn.uid('STORE', msg_uid, '-FLAGS', '(\Seen)')
         return self.uid('STORE', message_set, command, flags)
 
+    def thread(self, threading_algorithm, charset, *search_criteria):
+        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr, Tuple]) -> Tuple[AnyStr, Any, list]
+        """IMAPrev1 extension THREAD command.
+
+        (type, [data]) = <instance>.thread(threading_algorithm, charset, search_criteria, ...)
+        """
+
+        # Preprocess the search_criterion tuple - make sure all string data is split up in order
+        # to make each component of the argument as its own tuple item, instead of strings with
+        # spaces.
+        _search_criterion = []
+        for criterion in search_criteria:
+            criterion = str(criterion)
+            if ' ' in criterion:
+                for subcriterion in criterion.split():
+                    _search_criterion.append(subcriterion)
+            else:
+                _search_criterion.append(criterion)
+
+        search_criteria = tuple(list(_search_criterion))
+
+        if not charset:
+            charset = 'UTF-8'
+
+        # conn.uid('THREAD', threading_algorithm, charset, search criterion)
+        return self.uid('THREAD', threading_algorithm, charset, search_criteria)
+
 
 # noinspection PyPep8Naming
 class IMAP4_SSL(imaplib.IMAP4_SSL):
@@ -225,3 +252,30 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
 
         # conn.uid('STORE', msg_uid, '-FLAGS', '(\Seen)')
         return self.uid('STORE', message_set, command, flags)
+
+    def thread(self, threading_algorithm, charset, *search_criteria):
+        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr, Tuple]) -> Tuple[AnyStr, Any, list]
+        """IMAPrev1 extension THREAD command.
+
+        (type, [data]) = <instance>.thread(threading_algorithm, charset, search_criteria, ...)
+        """
+
+        # Preprocess the search_criterion tuple - make sure all string data is split up in order
+        # to make each component of the argument as its own tuple item, instead of strings with
+        # spaces.
+        _search_criterion = []
+        for criterion in search_criteria:
+            criterion = str(criterion)
+            if ' ' in criterion:
+                for subcriterion in criterion.split():
+                    _search_criterion.append(subcriterion)
+            else:
+                _search_criterion.append(criterion)
+
+        search_criteria = tuple(list(_search_criterion))
+
+        if not charset:
+            charset = 'UTF-8'
+
+        # conn.uid('THREAD', threading_algorithm, charset, search criterion)
+        return self.uid('THREAD', threading_algorithm, charset, search_criteria)
