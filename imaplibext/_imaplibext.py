@@ -94,6 +94,10 @@ class IMAP4(imaplib.IMAP4):
 
             break
 
+        # Charset is a required argument, so if we give a charset of "None", we can assume UTF-8 here.
+        if not charset:
+            charset = 'UTF-8'
+
         return self.uid('SORT', sort_criteria, charset, ' '.join(search_criteria))
 
     def store(self, message_set, command, flags):
@@ -205,6 +209,10 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
                 continue
 
             break
+
+        # Charset is a required argument, so if we give a charset of "None", we can assume UTF-8 here.
+        if not charset:
+            charset = 'UTF-8'
 
         return self.uid('SORT', sort_criteria, charset, ' '.join(search_criteria))
 
