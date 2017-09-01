@@ -1,12 +1,12 @@
 import imaplib
 import socket
-from typing import Union, Tuple, AnyStr, List, Any
 import sys
+from typing import Any, AnyStr, List, Optional, Tuple, Union
 
 
 class IMAP4(imaplib.IMAP4):
     def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None, maxbytes=None):
-        # type: (AnyStr, int) -> None
+        # type: (AnyStr, int, int, int) -> None
         # Override standard __init__ - we need to add a timeout option and a maxbytes option.
 
         # This timeout option is used below in the 'open' function override.
@@ -19,10 +19,9 @@ class IMAP4(imaplib.IMAP4):
             imaplib._MAXLINE = maxbytes
 
         imaplib.IMAP4.__init__(self, host, port)
-        return  # PEP compliance
 
     def copy(self, message_set, new_mailbox):
-        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, list]
+        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List]
         """Copy 'message_set' messages onto end of 'new_mailbox'.
 
         (typ, [data]) = <instance>.copy(message_set, new_mailbox)
@@ -47,7 +46,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('FETCH', message_set, message_parts)
 
     def search(self, charset, *criteria):
-        # type: (Union[AnyStr, None], Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
+        # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
         """Search mailbox for matching messages.
 
         (typ, [data]) = <instance>.search(charset, criterion, ...)
@@ -60,7 +59,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('SEARCH', charset, " ".join(criteria))
 
     def sort(self, sort_criteria, charset, *search_criteria):
-        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
+        # type: (AnyStr, Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
         """IMAP4rev1 extension SORT command.
 
         (typ, [data]) = <instance>.sort(sort_criteria, charset, search_criteria, ...)
@@ -74,25 +73,17 @@ class IMAP4(imaplib.IMAP4):
         _search_criterion = []
         for criterion in search_criteria:
             criterion = str(criterion)
-            if ' ' in criterion:
-                for subcriterion in criterion.split():
-                    _search_criterion.append(subcriterion)
-            else:
-                _search_criterion.append(criterion)
+            _search_criterion.extend(criterion.split())
 
-        search_criteria = tuple(list(_search_criterion))
+        search_criteria = tuple(_search_criterion)
 
         # Preprocess the 'sort criteria' provided - make sure it's all in parentheses.
-        while True:
-            if sort_criteria[0] != '(':
-                sort_criteria = '(' + sort_criteria
-                continue
 
-            if sort_criteria[len(sort_criteria) - 1] != ')':
-                sort_criteria += ')'
-                continue
+        if sort_criteria[0] != '(':
+            sort_criteria = '(' + sort_criteria
 
-            break
+        if sort_criteria[len(sort_criteria) - 1] != ')':
+            sort_criteria += ')'
 
         # Charset is a required argument, so if we give a charset of "None", we can assume UTF-8 here.
         if not charset:
@@ -101,7 +92,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('SORT', sort_criteria, charset, ' '.join(search_criteria))
 
     def store(self, message_set, command, flags):
-        # type: (AnyStr, AnyStr, AnyStr) -> Tuple[AnyStr, list]
+        # type: (AnyStr, AnyStr, AnyStr) -> Tuple[AnyStr, List]
         """Alters flag dispositions for messages in mailbox, using UID values.
 
         (typ, [data]) = <instance>.store(message_set, command, flags)
@@ -111,7 +102,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('STORE', message_set, command, flags)
 
     def thread(self, threading_algorithm, charset, *search_criteria):
-        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr, Tuple]) -> Tuple[AnyStr, Any, list]
+        # type: (AnyStr, Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, Any, List]
         """IMAPrev1 extension THREAD command.
 
         (type, [data]) = <instance>.thread(threading_algorithm, charset, search_criteria, ...)
@@ -162,10 +153,8 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         else:
             imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile, ssl_context)
 
-        return  # PEP compliance
-
     def copy(self, message_set, new_mailbox):
-        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, list]
+        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List]
         """Copy 'message_set' messages onto end of 'new_mailbox'.
 
         (typ, [data]) = <instance>.copy(message_set, new_mailbox)
@@ -190,7 +179,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('FETCH', message_set, message_parts)
 
     def search(self, charset, *criteria):
-        # type: (Union[AnyStr, None], Union[AnyStr, tuple]) -> Tuple[AnyStr, list]
+        # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
         """Search mailbox for matching messages.
 
         (typ, [data]) = <instance>.search(charset, criterion, ...)
@@ -203,7 +192,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('SEARCH', charset, " ".join(criteria))
 
     def sort(self, sort_criteria, charset, *search_criteria):
-        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr,tuple]) -> Tuple[AnyStr, list]
+        # type: (AnyStr, Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
         """IMAP4rev1 extension SORT command.
 
         (typ, [data]) = <instance>.sort(sort_criteria, charset, search_criteria, ...)
@@ -244,7 +233,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('SORT', sort_criteria, charset, ' '.join(search_criteria))
 
     def store(self, message_set, command, flags):
-        # type: (AnyStr, AnyStr, AnyStr) -> Tuple[AnyStr, list]
+        # type: (AnyStr, AnyStr, AnyStr) -> Tuple[AnyStr, List]
         """Alters flag dispositions for messages in mailbox, using UID values.
 
         (typ, [data]) = <instance>.store(message_set, command, flags)
@@ -254,7 +243,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('STORE', message_set, command, flags)
 
     def thread(self, threading_algorithm, charset, *search_criteria):
-        # type: (AnyStr, Union[AnyStr, None], Union[AnyStr, Tuple]) -> Tuple[AnyStr, Any, list]
+        # type: (AnyStr, Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, Any, List]
         """IMAPrev1 extension THREAD command.
 
         (type, [data]) = <instance>.thread(threading_algorithm, charset, search_criteria, ...)
