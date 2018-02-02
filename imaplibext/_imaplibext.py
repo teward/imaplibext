@@ -30,7 +30,7 @@ class IMAP4(imaplib.IMAP4):
         # conn.uid('COPY', message_set, new_mailbox)
         return self.uid('COPY', message_set, new_mailbox)
 
-    def fetch(self, message_set, message_parts):
+    def fetch(self, message_set, message_parts='(RFC822)'):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
         """Fetch (parts of) messages, using UID values.
 
@@ -148,7 +148,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         if sys.version_info.major < 3:
             if ssl_context:
                 print("Warning: Defining `ssl_context` is not supported in "
-                      "Python 2's IMAP_SSL implementation.")
+                      "Python 2's IMAP4_SSL implementation.")
             imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile)
         else:
             imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile, ssl_context)
@@ -163,7 +163,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         # conn.uid('COPY', message_set, new_mailbox)
         return self.uid('COPY', message_set, new_mailbox)
 
-    def fetch(self, message_set, message_parts):
+    def fetch(self, message_set, message_parts='(RFC822)'):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
         """Fetch (parts of) messages, using UID values.
 
