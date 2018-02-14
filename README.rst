@@ -115,9 +115,4 @@ Frequently Asked Questions
 
 ### Where can I report issues or make Feature Requests?
 
-Issues can be reported on the `Dark-Net.IO YouTrack instance against the "imaplibext (Python)" project
-<https://youtrack.dark-net.io/newissue?project=IMAP_PY>`_ (via the guest account, unfortunately, as YouTrack tends
-to get very very expensive in the long run for many users; you can click the above link to go right to the "Issue
-Creation" page).  Issues will be tracked there, and only there, and you get a better idea of the state of issues
-or feature requests that way as well.  While this does not permit you to subscribe to such issue notifications,
-you can get an at-a-glance idea of the state of your issue, without having to read through comments.
+Issues and feature requests can be reported on the `Github Repository <https://github.com/teward/imaplibext>`_

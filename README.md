@@ -5,9 +5,6 @@
 <table>
 <tr><td align=center valign=center><a href="http://www.gnu.org/licenses/agpl-3.0" target="_blank"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" title="AGPL 3.0" /></a></td></tr>
 <tr><td align=center valign=center><a href="https://pypi.python.org/pypi/imaplibext" target="_blank"><img src="http://img.shields.io/pypi/v/imaplibext.svg" title="PyPI Version" /></a></td></tr>
-<tr><td align=center valign=center><a href="https://pypi.python.org/pypi/imaplibext" target="_blank"><img src="http://img.shields.io/pypi/dm/imaplibext.svg" title="Montly Downloads" /><br />
-<img src="http://img.shields.io/pypi/dw/imaplibext.svg" title="Weekly Downloads" /><br />
-<img src="http://img.shields.io/pypi/dd/imaplibext.svg" title="Daily Downloads" /></a></td></tr>
 </table>
 
 
@@ -109,12 +106,7 @@ difference in how to reference functions or the classes in the IMAP4 or IMAP4_SS
 
 ### Where can I report issues or make Feature Requests?
 
-Issues can be reported on the [Dark-Net.IO YouTrack instance against the "imaplibext (Python)" project][3] (via the 
-guest account, unfortunately, as YouTrack tends to get very very expensive in the long run for many users; you can 
-click the above link to go right to the "Issue Creation" page).  Issues will be tracked there, and only there, and you 
-get a better idea of the state of issues or feature requests that way as well.  While this does not permit you to 
-subscribe to such issue notifications, you can get an at-a-glance idea of the state of your issue, without having to 
-read through comments.
+Issues and feature requests can be reported on the [Github Repository](https://github.com/teward/imaplibext)
 
 
 [1]: https://stackoverflow.com/questions/42631422/mark-a-single-imap-message-as-unread

@@ -5,7 +5,7 @@ from typing import Any, AnyStr, List, Optional, Tuple, Union
 
 
 class IMAP4(imaplib.IMAP4):
-    def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None, maxbytes=None):
+    def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None, maxbytes=50000):
         # type: (AnyStr, int, int, int) -> None
         # Override standard __init__ - we need to add a timeout option and a maxbytes option.
 
@@ -14,7 +14,7 @@ class IMAP4(imaplib.IMAP4):
             socket.setdefaulttimeout(timeout)
 
         # This maxbytes option is used below to override the max bytes allowed to be returned from UID commands and
-        # others if defined.  Otherwise it leaves it at the 10000 default.
+        # others if defined.  Otherwise it is set to 50000, five times the imaplib default.
         if maxbytes:
             imaplib._MAXLINE = maxbytes
 
@@ -131,7 +131,7 @@ class IMAP4(imaplib.IMAP4):
 
 # noinspection PyPep8Naming
 class IMAP4_SSL(imaplib.IMAP4_SSL):
-    def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None, maxbytes=None,
+    def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None, maxbytes=50000,
                  keyfile=None, certfile=None, ssl_context=None):
         # type: (AnyStr, int, int, any, any, any) -> None
         # Override standard __init__ - we need to add a timeout option.
@@ -141,7 +141,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
             socket.setdefaulttimeout(timeout)
 
         # This maxbytes option is used below to override the max bytes allowed to be returned from UID commands and
-        # others if defined.  Otherwise it leaves it at the 10000 default.
+        # others if defined.  Otherwise it is set to 50000, five times the imaplib default.
         if maxbytes:
             imaplib._MAXLINE = maxbytes
 
@@ -152,6 +152,8 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
             imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile)
         else:
             imaplib.IMAP4_SSL.__init__(self, host, port, keyfile, certfile, ssl_context)
+
+        imaplib._MAXLINE = 200000
 
     def copy(self, message_set, new_mailbox):
         # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List]
