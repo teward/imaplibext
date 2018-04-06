@@ -31,7 +31,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('COPY', message_set, new_mailbox)
 
     def fetch(self, message_set, message_parts='(RFC822)'):
-        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
+        # type: (Union[AnyStr, int], AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
         """Fetch (parts of) messages, using UID values.
 
         (typ, [data, ...]) = <instance>.fetch(message_set, message_parts)
@@ -43,7 +43,7 @@ class IMAP4(imaplib.IMAP4):
         """
 
         # conn.uid('FETCH', msgset, parts)
-        return self.uid('FETCH', message_set, message_parts)
+        return self.uid('FETCH', str(message_set), message_parts)
 
     def search(self, charset, *criteria):
         # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
@@ -166,7 +166,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('COPY', message_set, new_mailbox)
 
     def fetch(self, message_set, message_parts='(RFC822)'):
-        # type: (AnyStr, AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
+        # type: (Union[AnyStr, int], AnyStr) -> Tuple[AnyStr, List[Tuple[Any]]]
         """Fetch (parts of) messages, using UID values.
 
         (typ, [data, ...]) = <instance>.fetch(message_set, message_parts)
@@ -178,7 +178,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         """
 
         # conn.uid('FETCH', msgset, parts)
-        return self.uid('FETCH', message_set, message_parts)
+        return self.uid('FETCH', str(message_set), message_parts)
 
     def search(self, charset, *criteria):
         # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
