@@ -46,7 +46,7 @@ class IMAP4(imaplib.IMAP4):
         return self.uid('FETCH', str(message_set), message_parts)
 
     def search(self, charset, *criteria):
-        # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
+        # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List[bytes]]
         """Search mailbox for matching messages.
 
         (typ, [data]) = <instance>.search(charset, criterion, ...)
@@ -181,7 +181,7 @@ class IMAP4_SSL(imaplib.IMAP4_SSL):
         return self.uid('FETCH', message_set, message_parts)
 
     def search(self, charset, *criteria):
-        # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List]
+        # type: (Optional[AnyStr], Union[AnyStr, Tuple]) -> Tuple[AnyStr, List[bytes]]
         """Search mailbox for matching messages.
 
         (typ, [data]) = <instance>.search(charset, criterion, ...)
