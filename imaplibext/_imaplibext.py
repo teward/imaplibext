@@ -1,7 +1,13 @@
 import imaplib
 import socket
 import sys
-from typing import Any, AnyStr, List, Optional, Tuple, Union
+from typing import Any, List, Optional, Tuple, Union
+
+# AnyStr definition in typing has changed since the initial implementation of it for this library, such that it is
+# designed to *not* allow mixed types of strings (such as both bytes and str objects).  It used to behave instead like
+# Union[str, bytes].  So, we define AnyStr locally here as Union[str, bytes] so that code typing systems don't complain
+# about mixed str and bytes for AnyStr calls.
+AnyStr = Union[str, bytes]
 
 
 class IMAP4(imaplib.IMAP4):
