@@ -1,19 +1,58 @@
-machine:
-  python:
-    version: 2.7.10
-dependencies:
-  pre:
-    - if [ $CIRCLE_NODE_INDEX == "1" ] ; then pyenv global 3.6.1 ; fi
-  cache_directories:
-    - "~/virtualenvs"
-    - "~/.cache/pip"
-  override:
-    - case $CIRCLE_NODE_INDEX in 0) pyenv local 2.7.10 ;; 1) pyenv local 3.6.1 ;; esac
-    - case $CIRCLE_NODE_INDEX in 0) pip install flake8 --upgrade ;; 1) pip3 install flake8 --upgrade ;; esac
-    - case $CIRCLE_NODE_INDEX in 0) pip install -r requirements.txt --upgrade ;; 1) pip3 install -r requirements.txt --upgrade ;; esac
-test:
-  override:
-      - case $CIRCLE_NODE_INDEX in 0) flake8 . ;; 1) flake8 . ;; esac:
-          parallel: true
-      - case $CIRCLE_NODE_INDEX in 0) python -m unittest -v tests ;; 1) python3 -m unittest -v tests ;; esac:
-          parallel: true
+version: 2
+
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - test-3.7
+      - test-3.6
+      - test-3.5
+      - test-2.7
+
+jobs:
+  test-3.7: &test-template
+    docker:
+      - image: circleci/python:3.7
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: |
+            python -m venv venv || virtualenv venv
+            . venv/bin/activate
+            cd ~/repo/
+            pip install -r requirements.txt --upgrade
+
+      - run:
+          name: Install Flake
+          command: |
+            python -m venv venv || virtualenv venv
+            . venv/bin/activate
+            pip install flake8 --upgrade
+
+      - run:
+          name: Run flake8
+          command: |
+            python -m venv venv || virtualenv venv
+            . venv/bin/activate
+            cd ~/repo/
+            python -m flake8 --config=tox.ini ./imaplibext/
+
+  test-3.6:
+    <<: *test-template
+    docker:
+      - image: circleci/python:3.6.6
+
+  test-3.5:
+    <<: *test-template
+    docker:
+      - image: circleci/python:3.5.5
+
+  test-2.7:
+    <<: *test-template
+    docker:
+      - image: circleci/python:2.7.15
