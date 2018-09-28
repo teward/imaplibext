@@ -106,7 +106,7 @@ difference in how to reference functions or the classes in the IMAP4 or IMAP4_SS
 
 ### Where can I report issues or make Feature Requests?
 
-Issues and feature requests can be reported on the [Github Repository](https://github.com/teward/imaplibext)
+Issues and feature requests can be reported on the [Gitlab Repository](https://gitlab.com/teward/imaplibext)
 
 
 [1]: https://stackoverflow.com/questions/42631422/mark-a-single-imap-message-as-unread
