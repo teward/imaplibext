@@ -12,9 +12,7 @@
 
 | CI Provider | Status                                                                                                                                                              |
 |:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Travis CI   | [![Travis-CI](https://travis-ci.org/teward/imaplibext.svg?branch=master)](https://travis-ci.org/teward/imaplibext)                                                  |
-| CircleCI    | [![CircleCI](https://circleci.com/gh/teward/imaplibext.svg?style=shield)](https://circleci.com/gh/teward/imaplibext)                                                |
-| AppVeyor    | [![AppVeyor](https://ci.appveyor.com/api/projects/status/nqlp3btyfb1trpgw/branch/master?svg=true)](https://ci.appveyor.com/project/teward/imaplibext/branch/master) |
+| GitLab CI   | [![GitLab CI Pipeline](https://gitlab.com/teward/imaplibext/badges/master/pipeline.svg)](https://gitlab.com/teward/imaplibext/commits/master)                       |
 
 
 ## Description
