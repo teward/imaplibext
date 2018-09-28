@@ -6,6 +6,9 @@ before_script: # bash
 build:p27:
   image: python:2.7-stretch
   script:
+  - echo "Getting PyPI Requirements..."
+  - pip install -r ./requirements.txt
+  - echo "Installing..."
   - pip install -e .
   - echo "Running Flake..."
   - pip install flake8 --upgrade
@@ -14,23 +17,32 @@ build:p27:
 build:p35:
   image: python:3.5-stretch
   script:
+  - echo "Getting PyPI Requirements..."
+  - pip3 install -r ./requirements.txt
+  - echo "Installing..."
   - pip3 install -e .
   - echo "Running Flake..."
-  - pip install flake8 --upgrade
+  - pip3 install flake8 --upgrade
   - python -m flake8 --config=tox.ini ./imaplibext/
 
 build:p36:
   image: python:3.6-stretch
   script:
+  - echo "Getting PyPI Requirements..."
+  - pip3 install -r ./requirements.txt
+  - echo "Installing..."
   - pip3 install -e .
   - echo "Running Flake..."
-  - pip install flake8 --upgrade
+  - pip3 install flake8 --upgrade
   - python -m flake8 --config=tox.ini ./imaplibext/
 
 build:p37:
   image: python:3.7-stretch
   script:
+  - echo "Getting PyPI Requirements..."
+  - pip3 install -r ./requirements.txt
+  - echo "Installing..."
   - pip3 install -e .
   - echo "Running Flake..."
-  - pip install flake8 --upgrade
+  - pip3 install flake8 --upgrade
   - python -m flake8 --config=tox.ini ./imaplibext/
