@@ -1,0 +1,44 @@
+# https://docs.gitlab.com/ce/ci/yaml/README.html
+
+before_script: # bash
+- python3 --version
+
+build:p26:
+  image: python:2.6-slim
+  script:
+  - pip install -e .
+  - echo "Running Flake..."
+  - pip install flake8 --upgrade
+  - python -m flake8 --config=tox.ini ./imaplibext/
+  
+build:p27:
+  image: python:2.6-slim
+  script:
+  - pip install -e .
+  - echo "Running Flake..."
+  - pip install flake8 --upgrade
+  - python -m flake8 --config=tox.ini ./imaplibext/
+
+build:p35:
+  image: python:3.5-slim
+  script:
+  - pip3 install -e .
+  - echo "Running Flake..."
+  - pip install flake8 --upgrade
+  - python -m flake8 --config=tox.ini ./imaplibext/
+
+build:p36:
+  image: python:3.6-slim
+  script:
+  - pip3 install -e .
+  - echo "Running Flake..."
+  - pip install flake8 --upgrade
+  - python -m flake8 --config=tox.ini ./imaplibext/
+
+build:p37:
+  image: python:3.7-slim
+  script:
+  - pip3 install -e .
+  - echo "Running Flake..."
+  - pip install flake8 --upgrade
+  - python -m flake8 --config=tox.ini ./imaplibext/
