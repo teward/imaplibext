@@ -13,7 +13,7 @@ build:p27:
   - echo "Running Flake..."
   - pip install flake8 --upgrade
   - python -m flake8 --config=tox.ini ./imaplibext/
-  - echo 'Running tests..."
+  - echo "Running tests..."
   - python -m unittest -v tests
 
 build:p35:
@@ -26,7 +26,7 @@ build:p35:
   - echo "Running Flake..."
   - pip3 install flake8 --upgrade
   - python3 -m flake8 --config=tox.ini ./imaplibext/
-  - echo 'Running tests..."
+  - echo "Running tests..."
   - python3 -m unittest -v tests
 
 build:p36:
@@ -39,7 +39,7 @@ build:p36:
   - echo "Running Flake..."
   - pip3 install flake8 --upgrade
   - python3 -m flake8 --config=tox.ini ./imaplibext/
-  - echo 'Running tests..."
+  - echo "Running tests...""
   - python3 -m unittest -v tests
 
 build:p37:
@@ -52,5 +52,5 @@ build:p37:
   - echo "Running Flake..."
   - pip3 install flake8 --upgrade
   - python3 -m flake8 --config=tox.ini ./imaplibext/
-  - echo 'Running tests..."
+  - echo "Running tests..."
   - python3 -m unittest -v tests
