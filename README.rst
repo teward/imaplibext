@@ -115,4 +115,4 @@ Frequently Asked Questions
 
 ### Where can I report issues or make Feature Requests?
 
-Issues and feature requests can be reported on the `Github Repository <https://github.com/teward/imaplibext>`_
+Issues and feature requests can be reported on the `Gitlab Repository <https://gitlab.com/teward/imaplibext>`_
