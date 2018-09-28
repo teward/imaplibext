@@ -39,7 +39,7 @@ build:p36:
   - echo "Running Flake..."
   - pip3 install flake8 --upgrade
   - python3 -m flake8 --config=tox.ini ./imaplibext/
-  - echo "Running tests...""
+  - echo "Running tests..."
   - python3 -m unittest -v tests
 
 build:p37:
