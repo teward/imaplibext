@@ -20,7 +20,7 @@ setup(
                      "commands, by using the `uid` command and passing UID-format commands for the functions that are "
                      "overridden.",
     license='AGPLv3+',
-    url='https://github.com/teward/imaplibext',
+    url='https://gitlab.com/teward/imaplibext',
     download_url='https://pypi.python.org/pypi/imaplibext',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
