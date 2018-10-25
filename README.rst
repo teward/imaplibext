@@ -4,6 +4,34 @@ IMAP Lib Extension Module
 
 License: `GNU Affero GPL 3.0 <https://www.gnu.org/licenses/agpl-3.0.txt>`_ (or later)
 
+**NOTICE! The GitHub repository is simply a mirror of the GitLab
+repository. All development now takes place on GitLab. Please do not
+open issues here on GitHub, they will get no attention at all and not be
+addressed.**
+
+Basic Information
+-----------------
+.. raw:: html
+
+    <table>
+    <tr><td align=center valign=center><a href="http://www.gnu.org/licenses/agpl-3.0" target="_blank"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" title="AGPL 3.0" /></a></td></tr>
+    <tr><td align=center valign=center><a href="https://pypi.python.org/pypi/imaplibext" target="_blank"><img src="http://img.shields.io/pypi/v/imaplibext.svg" title="PyPI Version" /></a></td></tr>
+    </table>
+
+Continuous Integration Status
+-----------------------------
+
+.. raw:: html
+
+    <table>
+    <tr><th align=center valign=center>CI Provider</th><th align=center valign=center>Status</th></tr>
+    <tr><td align=center valign=center>GitLab CI</td><td align=center valign=center><a href="https://gitlab.com/teward/imaplibext/commits/master"><img alt="pipeline status" src="https://gitlab.com/teward/imaplibext/badges/master/pipeline.svg" /></a></td>
+    <tr><td align=center valign=center>AppVeyor</td><td align=center valign=center><a href="https://ci.appveyor.com/project/teward/imaplibext"><img alt="AppVeyor CI" src="https://ci.appveyor.com/api/projects/status/qtpyo61gxt7x2s5q?svg=true" /></a></td></tr>
+    <!--<tr><td align=center valign=center>CircleCI (via GitHub)</td><td align=center valign=center><a href="https://circleci.com/gh/teward/imaplibext"><img alt="CircleCI" src="https://circleci.com/gh/teward/imaplibext.svg?style=svg" /></a></td></tr>
+    <tr><td align=center valign=center>TravisCI (via GitHub)</td><td align=center valign=center><a href="https://travis-ci.org/teward/imaplibext"><img alt="Travis CI" src="https://travis-ci.org/teward/imaplibext.svg?branch=master" /></a></td></tr>-->
+    </table>
+
+
 Description
 -----------
 
