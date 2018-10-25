@@ -1,5 +1,8 @@
 ## IMAP Lib Extension Module
 
+**NOTICE!  The GitHub repository is simply a mirror of the GitLab repository.  All development now takes place on GitLab.
+Please do not open issues here on GitHub, they will get no attention at all and not be addressed.**
+
 ### Basic Information
 
 <table>
@@ -15,7 +18,8 @@
 | GitLab CI             | [![Pipeline Status](https://gitlab.com/teward/imaplibext/badges/master/pipeline.svg)](https://gitlab.com/teward/imaplibext/commits/master)  |
 | Appveyor              | [![Build status](https://ci.appveyor.com/api/projects/status/qtpyo61gxt7x2s5q?svg=true)](https://ci.appveyor.com/project/teward/imaplibext) |
 
-<!--| CircleCI (via GitHub) | [![CircleCI](https://circleci.com/gh/teward/pytio.svg?style=svg)](https://circleci.com/gh/teward/pytio)                                     |
+<!-- Prep for CircleCI and TravisCI via GitHub.  This'll take some 'doing'...
+| CircleCI (via GitHub) | [![CircleCI](https://circleci.com/gh/teward/pytio.svg?style=svg)](https://circleci.com/gh/teward/pytio)                                     |
 | TravisCI (via GitHub) | [![Build Status](https://travis-ci.org/teward/pytio.svg?branch=master)](https://travis-ci.org/teward/pytio)                                 |-->
 
 ## Description
