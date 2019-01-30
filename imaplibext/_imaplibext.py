@@ -139,7 +139,7 @@ class IMAP4(imaplib.IMAP4):
 class IMAP4_SSL(imaplib.IMAP4_SSL):
     def __init__(self, host='', port=imaplib.IMAP4_PORT, timeout=None, maxbytes=50000,
                  keyfile=None, certfile=None, ssl_context=None):
-        # type: (AnyStr, int, int, any, any, any) -> None
+        # type: (AnyStr, int, int, int, any, any, any) -> None
         # Override standard __init__ - we need to add a timeout option.
         # This timeout option is used below in the 'open' function override.
         self.timeout = timeout
