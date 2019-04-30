@@ -1,8 +1,10 @@
 language: python
 sudo: false
+dist: bionic
 python:
   - '2.7'
   - '3.6'
+  - '3.7'
 cache:
   directories:
     - $HOME/virtualenv/python*
