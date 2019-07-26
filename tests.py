@@ -8,7 +8,7 @@ class TestIMAPMethods(unittest.TestCase):
         # type: () -> None
         # noinspection PyUnusedLocal
         conn = None
-        conn = imaplibext.IMAP4('mail.dark-net.io', 143)
+        conn = imaplibext.IMAP4('mail.syn-ack.link', 143)
         self.assertIsNotNone(conn, 'Expected an actual conn here.')
         self.assertEqual(conn.state, 'NONAUTH', "Expected non-authenticated connection state.")
         return None  # Python 2 Type Hinting Compliance
@@ -17,7 +17,7 @@ class TestIMAPMethods(unittest.TestCase):
         # type: () -> None
         # noinspection PyUnusedLocal
         conn = None
-        conn = imaplibext.IMAP4_SSL('mail.dark-net.io', 993)
+        conn = imaplibext.IMAP4_SSL('mail.syn-ack.link', 993)
         self.assertIsNotNone(conn, 'Expected an actual conn here.')
         self.assertEqual(conn.state, 'NONAUTH', "Expected non-authenticated connection state.")
         return None  # Python 2 Type Hinting Compliance
