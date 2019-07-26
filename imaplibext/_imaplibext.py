@@ -48,6 +48,9 @@ class IMAP4(imaplib.IMAP4):
         'data' are tuples of message part envelope and data.
         """
 
+        if isinstance(message_set, bytes):
+            message_set = message_set.decode("utf-8")
+
         # conn.uid('FETCH', msgset, parts)
         return self.uid('FETCH', str(message_set), message_parts)
 
